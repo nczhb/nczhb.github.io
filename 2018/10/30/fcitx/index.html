@@ -63,10 +63,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bulb-32x32-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bulb-16x16-next.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux,fcitx," />
 
 
 
@@ -87,13 +87,14 @@
 
 
 <meta name="description" content="&amp;emsp;&amp;emsp;相信每个第一次用linux的用户一开始都会碰到输入法的问题吧。大部分系统用的时fcitx，而刚装好系统后发现，这个小企鹅输入法怎么用不了。确实，就是不能直接给你用，它只是一个安装了基本结构的输入法，剩余的东西需要你自己手动来装。 安装一个ui&amp;emsp;&amp;emsp;首先你需要一个ui，这样你才能’看到’你的输入法，直接安装fcitx-ui-classic，之后注销一下就能看">
+<meta name="keywords" content="linux,fcitx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux下fcitx的配置和各种问题（图标异常、跳光标、卡顿等）">
 <meta property="og:url" content="http://yoursite.com/2018/10/30/fcitx/index.html">
-<meta property="og:site_name" content="cangjingge">
+<meta property="og:site_name" content="myth">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;相信每个第一次用linux的用户一开始都会碰到输入法的问题吧。大部分系统用的时fcitx，而刚装好系统后发现，这个小企鹅输入法怎么用不了。确实，就是不能直接给你用，它只是一个安装了基本结构的输入法，剩余的东西需要你自己手动来装。 安装一个ui&amp;emsp;&amp;emsp;首先你需要一个ui，这样你才能’看到’你的输入法，直接安装fcitx-ui-classic，之后注销一下就能看">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-30T15:46:01.544Z">
+<meta property="og:updated_time" content="2018-11-07T09:14:12.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下fcitx的配置和各种问题（图标异常、跳光标、卡顿等）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;相信每个第一次用linux的用户一开始都会碰到输入法的问题吧。大部分系统用的时fcitx，而刚装好系统后发现，这个小企鹅输入法怎么用不了。确实，就是不能直接给你用，它只是一个安装了基本结构的输入法，剩余的东西需要你自己手动来装。 安装一个ui&amp;emsp;&amp;emsp;首先你需要一个ui，这样你才能’看到’你的输入法，直接安装fcitx-ui-classic，之后注销一下就能看">
@@ -132,7 +133,7 @@
 
 
 
-  <title>linux下fcitx的配置和各种问题（图标异常、跳光标、卡顿等） | cangjingge</title>
+  <title>linux下fcitx的配置和各种问题（图标异常、跳光标、卡顿等） | myth</title>
   
 
 
@@ -163,7 +164,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">cangjingge</span>
+        <span class="site-title">myth</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -303,7 +304,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cangjingge">
+      <meta itemprop="name" content="myth">
     </span>
 
     
@@ -333,6 +334,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/其它/" itemprop="url" rel="index">
+                    <span itemprop="name">其它</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -396,7 +419,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>Donate comment here</div>
+  <div></div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>打赏</span>
   </button>
@@ -427,6 +450,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-paperclip"></i> linux</a>
+          
+            <a href="/tags/fcitx/" rel="tag"><i class="fa fa-paperclip"></i> fcitx</a>
+          
+        </div>
       
 
       
@@ -529,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -540,7 +571,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -551,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -63,10 +63,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bulb-32x32-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bulb-16x16-next.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="kaggle入门," />
 
 
 
@@ -87,14 +87,16 @@
 
 
 <meta name="description" content="&amp;emsp;&amp;emsp;这里我使用了ridge、lasso、xgboost，然后对他们进行stacking，最后把这四个的预测值加权求平均值12345678from sklearn.pipeline import make_pipelinefrom sklearn.preprocessing import RobustScalerfrom sklearn.linear_model import R">
+<meta name="keywords" content="kaggle入门">
 <meta property="og:type" content="article">
 <meta property="og:title" content="house_price(2)建模">
 <meta property="og:url" content="http://yoursite.com/2018/10/28/house-price2/index.html">
-<meta property="og:site_name" content="cangjingge">
+<meta property="og:site_name" content="myth">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;这里我使用了ridge、lasso、xgboost，然后对他们进行stacking，最后把这四个的预测值加权求平均值12345678from sklearn.pipeline import make_pipelinefrom sklearn.preprocessing import RobustScalerfrom sklearn.linear_model import R">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/house_price/ridge.png">
-<meta property="og:updated_time" content="2018-10-27T18:54:02.969Z">
+<meta property="og:image" content="http://yoursite.com/images/house_price/lasso.png">
+<meta property="og:updated_time" content="2018-11-07T09:47:20.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="house_price(2)建模">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;这里我使用了ridge、lasso、xgboost，然后对他们进行stacking，最后把这四个的预测值加权求平均值12345678from sklearn.pipeline import make_pipelinefrom sklearn.preprocessing import RobustScalerfrom sklearn.linear_model import R">
@@ -134,7 +136,7 @@
 
 
 
-  <title>house_price(2)建模 | cangjingge</title>
+  <title>house_price(2)建模 | myth</title>
   
 
 
@@ -165,7 +167,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">cangjingge</span>
+        <span class="site-title">myth</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -305,7 +307,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cangjingge">
+      <meta itemprop="name" content="myth">
     </span>
 
     
@@ -335,6 +337,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -382,14 +406,15 @@
 <h1 id="ridge"><a href="#ridge" class="headerlink" title="ridge"></a>ridge</h1><p><br><br>&emsp;&emsp;先手动找一下ridge比较好的l2值，这里是先粗略看下分布，后面在15附近又搜索了一遍，确定alpha=15.2<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ridge_test</span><span class="params">(alpha)</span>:</span></span><br><span class="line">    reg = make_pipeline(RobustScaler(), Ridge(alpha=alpha))</span><br><span class="line">    score = np.sqrt(-cross_val_score(reg, x_train, y_train, scoring=<span class="string">'neg_mean_squared_error'</span>, cv=<span class="number">10</span>)).mean()</span><br><span class="line">    <span class="keyword">return</span> score</span><br><span class="line"></span><br><span class="line">ridge_scores = []</span><br><span class="line">alphas = list(range(<span class="number">1</span>,<span class="number">30</span>))+[<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alphas:</span><br><span class="line">    ridge_scores.append(ridge_test(alpha))</span><br><span class="line"></span><br><span class="line">plt.plot(alphas, ridge_scores)</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/house_price/ridge.png" alt="ridge"><br>&emsp;&emsp;可以看到在15附近rmse值最低，最后确定为15.2<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ridge = make_pipeline(RobustScaler(), Ridge(alpha=<span class="number">15.2</span>))</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
-<p>#lasso<br><br><br>&emsp;&emsp;用类似上面的方法找lasso模型比较合适的正则化系数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lasso_scores = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lasso_test</span><span class="params">(alpha)</span>:</span></span><br><span class="line">    lasso = make_pipeline(RobustScaler(), Lasso(alpha=alpha, max_iter=<span class="number">1e7</span>))</span><br><span class="line">    lasso_scores.append(\</span><br><span class="line">        np.sqrt(-cross_val_score(lasso, x_train, y_train, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>)).mean())</span><br><span class="line"></span><br><span class="line">alphas = [<span class="number">0.00005</span>, <span class="number">0.0001</span>, <span class="number">0.0002</span>, <span class="number">0.0003</span>, <span class="number">0.0004</span>, <span class="number">0.0005</span>, <span class="number">0.0006</span>, <span class="number">0.0007</span>, <span class="number">0.0008</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alphas:</span><br><span class="line">    lasso_test(alpha)</span><br><span class="line">plt.plot(alphas, lasso_scores)</span><br><span class="line">plt.show()</span><br><span class="line">![lasso](/images/house_price/lasso.png)</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;最后选择alpha=0.0004<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lasso = make_pipeline(RobustScaler(), Lasso(alpha=<span class="number">0.0004</span>, max_iter=<span class="number">1e7</span>))</span><br></pre></td></tr></table></figure></p>
+<p>#lasso<br><br><br>&emsp;&emsp;用类似上面的方法找lasso模型比较合适的正则化系数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lasso_scores = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lasso_test</span><span class="params">(alpha)</span>:</span></span><br><span class="line">    lasso = make_pipeline(RobustScaler(), Lasso(alpha=alpha, max_iter=<span class="number">1e7</span>))</span><br><span class="line">    lasso_scores.append(\</span><br><span class="line">        np.sqrt(-cross_val_score(lasso, x_train, y_train, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>)).mean())</span><br><span class="line"></span><br><span class="line">alphas = [<span class="number">0.00005</span>, <span class="number">0.0001</span>, <span class="number">0.0002</span>, <span class="number">0.0003</span>, <span class="number">0.0004</span>, <span class="number">0.0005</span>, <span class="number">0.0006</span>, <span class="number">0.0007</span>, <span class="number">0.0008</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alphas:</span><br><span class="line">    lasso_test(alpha)</span><br><span class="line">plt.plot(alphas, lasso_scores)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/house_price/lasso.png" alt="lasso"><br>&emsp;&emsp;最后选择alpha=0.0004<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lasso = make_pipeline(RobustScaler(), Lasso(alpha=<span class="number">0.0004</span>, max_iter=<span class="number">1e7</span>))</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
 <h1 id="xgboost"><a href="#xgboost" class="headerlink" title="xgboost"></a>xgboost</h1><p><br><br>&emsp;&emsp;xgb需要用gridsearch来挑选参数，我是根据google到的一个顺序来挑选参数，但我感觉这个方法不够’优秀’，因为每次只对一到两个参数做gridsearch，会错过很多各个参数的搭配，但是一次调试的参数多起来，电脑吃不消。不知道是有更多调试的技巧，还是高手都是用服务器或者还有其他加速方式以供他们搜索大量的情况，以后有机会要请教一下<br>&emsp;&emsp;这是后来缩小范围的gridsearch：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">gsearch = GridSearchCV(estimator = XGBRegressor(),</span><br><span class="line">                      param_grid=&#123;</span><br><span class="line">                          <span class="string">'max_depth'</span>:[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">                          <span class="string">'subsample'</span>:[<span class="number">0.5</span>,<span class="number">0.6</span>,<span class="number">0.7</span>],</span><br><span class="line">                          <span class="string">'colsample_bytree'</span>:[<span class="number">0.5</span>,<span class="number">0.6</span>,<span class="number">0.7</span>],</span><br><span class="line">                          <span class="string">'min_child_weight'</span>:[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                          <span class="string">'gamma'</span>:[<span class="number">0</span>,<span class="number">0.003</span>,<span class="number">0.005</span>],</span><br><span class="line">                          <span class="string">'seed'</span>:list(range(<span class="number">20</span>))</span><br><span class="line">                      &#125;,</span><br><span class="line">                      scoring=<span class="string">'neg_mean_squared_error'</span>,</span><br><span class="line">                      cv=<span class="number">5</span>)</span><br></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;最后：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xgb = make_pipeline(RobustScaler(), XGBRegressor(learning_rate =<span class="number">0.01</span>, n_estimators=<span class="number">3500</span>, max_depth=<span class="number">3</span>,</span><br><span class="line">                     min_child_weight=<span class="number">0</span> , gamma=<span class="number">0</span>, subsample=<span class="number">0.6</span>,</span><br><span class="line">                     colsample_bytree=<span class="number">0.6</span>, reg_alpha=<span class="number">0</span>, seed=<span class="number">17</span>))</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
 <h1 id="stacking"><a href="#stacking" class="headerlink" title="stacking"></a>stacking</h1><p><br><br>&emsp;&emsp;通过对上面3个模型的预测值再进行学习，得到新的模型。同时这个方法有个参数use_features_in_secondary，如果选中，还会将原始数据放进来学习，这里我选True，元分类器我选择之前的xgb<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack = StackingCVRegressor(regressors=(ridge, lasso, xgb), meta_regressor=xgb, use_features_in_secondary=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
-<h1 id="最后用这4个模型对测试集进行预测，并将结果加权平均（记得把y用np-expm1转化回来）"><a href="#最后用这4个模型对测试集进行预测，并将结果加权平均（记得把y用np-expm1转化回来）" class="headerlink" title="最后用这4个模型对测试集进行预测，并将结果加权平均（记得把y用np.expm1转化回来）"></a>最后用这4个模型对测试集进行预测，并将结果加权平均（记得把y用np.expm1转化回来）</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ridge.fit(x_train, y_train)</span><br><span class="line">y_ridge = np.expm1(ridge.predict(x_test))</span><br><span class="line"></span><br><span class="line">lasso.fit(x_train, y_train)</span><br><span class="line">y_lasso = np.expm1(lasso.predict(x_test))</span><br><span class="line"></span><br><span class="line">xgb.fit(x_train, y_train)</span><br><span class="line">y_xgb = np.expm1(xgb.predict(x_test))</span><br><span class="line"></span><br><span class="line">stack.fit(x_train, y_train)</span><br><span class="line">y_stack = np.expm1(stack.predict(x_test))</span><br><span class="line"></span><br><span class="line">predict = <span class="number">0.5</span>*y_stack + <span class="number">0.1</span>*y_ridge + <span class="number">0.2</span>*y_lasso + <span class="number">0.2</span>*y_xgb</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="汇总结果"><a href="#汇总结果" class="headerlink" title="汇总结果"></a>汇总结果</h1><p><br><br>&emsp;&emsp;最后用这4个模型对测试集进行预测，并将结果加权平均（记得把y用np.expm1转化回来）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ridge.fit(x_train, y_train)</span><br><span class="line">y_ridge = np.expm1(ridge.predict(x_test))</span><br><span class="line"></span><br><span class="line">lasso.fit(x_train, y_train)</span><br><span class="line">y_lasso = np.expm1(lasso.predict(x_test))</span><br><span class="line"></span><br><span class="line">xgb.fit(x_train, y_train)</span><br><span class="line">y_xgb = np.expm1(xgb.predict(x_test))</span><br><span class="line"></span><br><span class="line">stack.fit(x_train, y_train)</span><br><span class="line">y_stack = np.expm1(stack.predict(x_test))</span><br><span class="line"></span><br><span class="line">predict = <span class="number">0.5</span>*y_stack + <span class="number">0.1</span>*y_ridge + <span class="number">0.2</span>*y_lasso + <span class="number">0.2</span>*y_xgb</span><br></pre></td></tr></table></figure></p>
 <p><br><br>&emsp;&emsp;到这里，一个baseline就算完成了，剩下的就是根据理解和猜想去调整特征和模型，我做到前8%就放弃了，确实是黔驴技穷。不过说回来，入门项目虽然简单，但是能很好地让新手认识机器学习基本的流程，随着以后掌握的技能越来越多，就可以在原来的基础上提高或接触更有挑战性的项目。kaggle上的讨论和分享要比国内的这几个竞赛网站好很多，这一点也是最吸引我的地方，就看以后有没有机会回来给这个小项目来一个质的提升吧。</p>
 
       
@@ -403,7 +428,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>Donate comment here</div>
+  <div></div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>打赏</span>
   </button>
@@ -435,6 +460,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/kaggle入门/" rel="tag"><i class="fa fa-paperclip"></i> kaggle入门</a>
+          
+        </div>
+      
 
       
       
@@ -454,8 +485,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/29/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/30/ip-pool/" rel="prev" title="建立ip池">
+                建立ip池 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -540,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -551,7 +582,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -562,7 +593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -605,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ridge"><span class="nav-number">1.</span> <span class="nav-text">ridge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xgboost"><span class="nav-number">2.</span> <span class="nav-text">xgboost</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stacking"><span class="nav-number">3.</span> <span class="nav-text">stacking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后用这4个模型对测试集进行预测，并将结果加权平均（记得把y用np-expm1转化回来）"><span class="nav-number">4.</span> <span class="nav-text">最后用这4个模型对测试集进行预测，并将结果加权平均（记得把y用np.expm1转化回来）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ridge"><span class="nav-number">1.</span> <span class="nav-text">ridge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xgboost"><span class="nav-number">2.</span> <span class="nav-text">xgboost</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stacking"><span class="nav-number">3.</span> <span class="nav-text">stacking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汇总结果"><span class="nav-number">4.</span> <span class="nav-text">汇总结果</span></a></li></ol></div>
             
 
           </div>

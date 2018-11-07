@@ -63,10 +63,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bulb-32x32-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bulb-16x16-next.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux,nvidia," />
 
 
 
@@ -87,16 +87,17 @@
 
 
 <meta name="description" content="&amp;emsp;&amp;emsp;总是能听到很多人说，linux下n卡怎么不好，不好装不好用，可能很多人还保留着很早以前对nvidia的怨气吧。实际使用起来还不错，只是我最早使用时确实风扇有点闹腾，但也很好解决。&amp;emsp;&amp;emsp;我按照debian wiki上的方法并不能装好，也是觉得很奇怪，所以只能下官网的安装包来解决了。&amp;emsp;&amp;emsp;所以，下面我将的都是用nvidia官网安装包进行安装的">
+<meta name="keywords" content="linux,nvidia">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux下n卡驱动配置（听说你n卡发热量大？）">
 <meta property="og:url" content="http://yoursite.com/2018/10/30/nvidia/index.html">
-<meta property="og:site_name" content="cangjingge">
+<meta property="og:site_name" content="myth">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;总是能听到很多人说，linux下n卡怎么不好，不好装不好用，可能很多人还保留着很早以前对nvidia的怨气吧。实际使用起来还不错，只是我最早使用时确实风扇有点闹腾，但也很好解决。&amp;emsp;&amp;emsp;我按照debian wiki上的方法并不能装好，也是觉得很奇怪，所以只能下官网的安装包来解决了。&amp;emsp;&amp;emsp;所以，下面我将的都是用nvidia官网安装包进行安装的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/nvidia/limit.png">
 <meta property="og:image" content="http://yoursite.com/images/nvidia/setting1.png">
 <meta property="og:image" content="http://yoursite.com/images/nvidia/setting2.png">
-<meta property="og:updated_time" content="2018-10-30T14:42:54.516Z">
+<meta property="og:updated_time" content="2018-11-07T09:14:31.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下n卡驱动配置（听说你n卡发热量大？）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;总是能听到很多人说，linux下n卡怎么不好，不好装不好用，可能很多人还保留着很早以前对nvidia的怨气吧。实际使用起来还不错，只是我最早使用时确实风扇有点闹腾，但也很好解决。&amp;emsp;&amp;emsp;我按照debian wiki上的方法并不能装好，也是觉得很奇怪，所以只能下官网的安装包来解决了。&amp;emsp;&amp;emsp;所以，下面我将的都是用nvidia官网安装包进行安装的">
@@ -136,7 +137,7 @@
 
 
 
-  <title>linux下n卡驱动配置（听说你n卡发热量大？） | cangjingge</title>
+  <title>linux下n卡驱动配置（听说你n卡发热量大？） | myth</title>
   
 
 
@@ -167,7 +168,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">cangjingge</span>
+        <span class="site-title">myth</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -307,7 +308,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cangjingge">
+      <meta itemprop="name" content="myth">
     </span>
 
     
@@ -337,6 +338,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/其它/" itemprop="url" rel="index">
+                    <span itemprop="name">其它</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -402,7 +425,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>Donate comment here</div>
+  <div></div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>打赏</span>
   </button>
@@ -433,6 +456,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-paperclip"></i> linux</a>
+          
+            <a href="/tags/nvidia/" rel="tag"><i class="fa fa-paperclip"></i> nvidia</a>
+          
+        </div>
       
 
       
@@ -539,7 +570,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +581,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -561,7 +592,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

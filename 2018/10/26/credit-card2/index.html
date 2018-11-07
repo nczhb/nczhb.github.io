@@ -63,10 +63,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bulb-32x32-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bulb-16x16-next.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="评分卡," />
 
 
 
@@ -87,15 +87,16 @@
 
 
 <meta name="description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，如果显著，我这里设置的p值是0.01，则保留这两组，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum().sum()    r =">
+<meta name="keywords" content="评分卡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="credit_card(2)卡方分箱和变量筛选">
 <meta property="og:url" content="http://yoursite.com/2018/10/26/credit-card2/index.html">
-<meta property="og:site_name" content="cangjingge">
+<meta property="og:site_name" content="myth">
 <meta property="og:description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，如果显著，我这里设置的p值是0.01，则保留这两组，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum().sum()    r =">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/credit/age.png">
 <meta property="og:image" content="http://yoursite.com/images/credit/xgb.png">
-<meta property="og:updated_time" content="2018-10-27T10:02:53.193Z">
+<meta property="og:updated_time" content="2018-11-07T09:11:54.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="credit_card(2)卡方分箱和变量筛选">
 <meta name="twitter:description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，如果显著，我这里设置的p值是0.01，则保留这两组，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum().sum()    r =">
@@ -135,7 +136,7 @@
 
 
 
-  <title>credit_card(2)卡方分箱和变量筛选 | cangjingge</title>
+  <title>credit_card(2)卡方分箱和变量筛选 | myth</title>
   
 
 
@@ -166,7 +167,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">cangjingge</span>
+        <span class="site-title">myth</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -306,7 +307,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cangjingge">
+      <meta itemprop="name" content="myth">
     </span>
 
     
@@ -336,6 +337,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -473,7 +496,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>Donate comment here</div>
+  <div></div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>打赏</span>
   </button>
@@ -504,6 +527,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/评分卡/" rel="tag"><i class="fa fa-paperclip"></i> 评分卡</a>
+          
+        </div>
       
 
       
@@ -610,7 +639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -621,7 +650,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -632,7 +661,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
