@@ -1,0 +1,52 @@
+div#border{
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+
+div#salary{
+    width:1000px;
+    height:600px;
+    margin:auto;
+}
+
+div#flex_h{
+    display: flex;
+    justify-content:center;
+    width: 80%;
+    position:relative;
+    left: 10%;
+    border: 1px solid black;
+    margin: 2px;
+}
+
+
+div#flex_v{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+div.echarts{
+    width: 1000px;
+    height: 500px;
+    border: 2px solid red;
+    margin:auto;
+}
+
+div#comment1{
+
+    width: 1000px;
+    height: 100px;
+    border: 2px solid red;
+    margin:auto;
+}
+
+div#comment2{
+
+    width: 1000px;
+    height: 200px;
+    border: 2px solid red;
+    margin:auto;
+}
