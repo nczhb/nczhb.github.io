@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="kaggle入门," />
+  <meta name="keywords" content="评分卡," />
 
 
 
@@ -86,21 +86,20 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;这里我使用了ridge、lasso、xgboost，然后对他们进行stacking，最后把这四个的预测值加权求平均值12345678from sklearn.pipeline import make_pipelinefrom sklearn.preprocessing import RobustScalerfrom sklearn.linear_model import R">
-<meta name="keywords" content="kaggle入门">
+<meta name="description" content="&amp;emsp;&amp;emsp;数据来自于kaggle的一个信用评估项目，比赛早就停止了，我就拿它的数据来做了一个简单的评分卡，话不多说，先来看看数据 数据预览&amp;emsp;&amp;emsp;数据的特征很少，总共10个自变量，下面是关于自变量的定义：    特征名 描述     RevolvingUtilizationOfUnsecuredLines Total balance on credit cards a">
+<meta name="keywords" content="评分卡">
 <meta property="og:type" content="article">
-<meta property="og:title" content="house_price(2)建模">
-<meta property="og:url" content="http://yoursite.com/2018/10/28/house-price2/index.html">
+<meta property="og:title" content="credit_card (1)预处理">
+<meta property="og:url" content="http://yoursite.com/2018/11/01/credit-card1/index.html">
 <meta property="og:site_name" content="myth land">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;这里我使用了ridge、lasso、xgboost，然后对他们进行stacking，最后把这四个的预测值加权求平均值12345678from sklearn.pipeline import make_pipelinefrom sklearn.preprocessing import RobustScalerfrom sklearn.linear_model import R">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;数据来自于kaggle的一个信用评估项目，比赛早就停止了，我就拿它的数据来做了一个简单的评分卡，话不多说，先来看看数据 数据预览&amp;emsp;&amp;emsp;数据的特征很少，总共10个自变量，下面是关于自变量的定义：    特征名 描述     RevolvingUtilizationOfUnsecuredLines Total balance on credit cards a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/house_price/ridge.png">
-<meta property="og:image" content="http://yoursite.com/images/house_price/lasso.png">
-<meta property="og:updated_time" content="2018-11-07T09:47:20.530Z">
+<meta property="og:image" content="http://yoursite.com/images/credit/corr.png">
+<meta property="og:updated_time" content="2018-11-08T08:43:59.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="house_price(2)建模">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;这里我使用了ridge、lasso、xgboost，然后对他们进行stacking，最后把这四个的预测值加权求平均值12345678from sklearn.pipeline import make_pipelinefrom sklearn.preprocessing import RobustScalerfrom sklearn.linear_model import R">
-<meta name="twitter:image" content="http://yoursite.com/images/house_price/ridge.png">
+<meta name="twitter:title" content="credit_card (1)预处理">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;数据来自于kaggle的一个信用评估项目，比赛早就停止了，我就拿它的数据来做了一个简单的评分卡，话不多说，先来看看数据 数据预览&amp;emsp;&amp;emsp;数据的特征很少，总共10个自变量，下面是关于自变量的定义：    特征名 描述     RevolvingUtilizationOfUnsecuredLines Total balance on credit cards a">
+<meta name="twitter:image" content="http://yoursite.com/images/credit/corr.png">
 
 
 
@@ -130,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/28/house-price2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/01/credit-card1/"/>
 
 
 
 
 
-  <title>house_price(2)建模 | myth land</title>
+  <title>credit_card (1)预处理 | myth land</title>
   
 
 
@@ -298,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/house-price2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/credit-card1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="asrain">
@@ -315,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">house_price(2)建模</h1>
+          <h1 class="post-title" itemprop="name headline">credit_card (1)预处理</h1>
         
 
         <div class="post-meta">
@@ -327,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-28T01:52:30+08:00">
-                2018-10-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-01T22:10:06+08:00">
+                2018-11-01
               </time>
             
 
@@ -368,8 +367,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/28/house-price2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/28/house-price2/" itemprop="commentCount"></span>
+                <a href="/2018/11/01/credit-card1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/01/credit-card1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -402,20 +401,67 @@
       
 
       
-        <p>&emsp;&emsp;这里我使用了ridge、lasso、xgboost，然后对他们进行stacking，最后把这四个的预测值加权求平均值<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> make_pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> RobustScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Ridge</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Lasso</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBRegressor</span><br><span class="line"><span class="keyword">from</span> mlxtend.regressor <span class="keyword">import</span> StackingCVRegressor</span><br></pre></td></tr></table></figure></p>
-<h1 id="ridge"><a href="#ridge" class="headerlink" title="ridge"></a>ridge</h1><p><br><br>&emsp;&emsp;先手动找一下ridge比较好的l2值，这里是先粗略看下分布，后面在15附近又搜索了一遍，确定alpha=15.2<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ridge_test</span><span class="params">(alpha)</span>:</span></span><br><span class="line">    reg = make_pipeline(RobustScaler(), Ridge(alpha=alpha))</span><br><span class="line">    score = np.sqrt(-cross_val_score(reg, x_train, y_train, scoring=<span class="string">'neg_mean_squared_error'</span>, cv=<span class="number">10</span>)).mean()</span><br><span class="line">    <span class="keyword">return</span> score</span><br><span class="line"></span><br><span class="line">ridge_scores = []</span><br><span class="line">alphas = list(range(<span class="number">1</span>,<span class="number">30</span>))+[<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alphas:</span><br><span class="line">    ridge_scores.append(ridge_test(alpha))</span><br><span class="line"></span><br><span class="line">plt.plot(alphas, ridge_scores)</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/house_price/ridge.png" alt="ridge"><br>&emsp;&emsp;可以看到在15附近rmse值最低，最后确定为15.2<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ridge = make_pipeline(RobustScaler(), Ridge(alpha=<span class="number">15.2</span>))</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<p>#lasso<br><br><br>&emsp;&emsp;用类似上面的方法找lasso模型比较合适的正则化系数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lasso_scores = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lasso_test</span><span class="params">(alpha)</span>:</span></span><br><span class="line">    lasso = make_pipeline(RobustScaler(), Lasso(alpha=alpha, max_iter=<span class="number">1e7</span>))</span><br><span class="line">    lasso_scores.append(\</span><br><span class="line">        np.sqrt(-cross_val_score(lasso, x_train, y_train, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>)).mean())</span><br><span class="line"></span><br><span class="line">alphas = [<span class="number">0.00005</span>, <span class="number">0.0001</span>, <span class="number">0.0002</span>, <span class="number">0.0003</span>, <span class="number">0.0004</span>, <span class="number">0.0005</span>, <span class="number">0.0006</span>, <span class="number">0.0007</span>, <span class="number">0.0008</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alphas:</span><br><span class="line">    lasso_test(alpha)</span><br><span class="line">plt.plot(alphas, lasso_scores)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/house_price/lasso.png" alt="lasso"><br>&emsp;&emsp;最后选择alpha=0.0004<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lasso = make_pipeline(RobustScaler(), Lasso(alpha=<span class="number">0.0004</span>, max_iter=<span class="number">1e7</span>))</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<h1 id="xgboost"><a href="#xgboost" class="headerlink" title="xgboost"></a>xgboost</h1><p><br><br>&emsp;&emsp;xgb需要用gridsearch来挑选参数，我是根据google到的一个顺序来挑选参数，但我感觉这个方法不够’优秀’，因为每次只对一到两个参数做gridsearch，会错过很多各个参数的搭配，但是一次调试的参数多起来，电脑吃不消。不知道是有更多调试的技巧，还是高手都是用服务器或者还有其他加速方式以供他们搜索大量的情况，以后有机会要请教一下<br>&emsp;&emsp;这是后来缩小范围的gridsearch：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">gsearch = GridSearchCV(estimator = XGBRegressor(),</span><br><span class="line">                      param_grid=&#123;</span><br><span class="line">                          <span class="string">'max_depth'</span>:[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">                          <span class="string">'subsample'</span>:[<span class="number">0.5</span>,<span class="number">0.6</span>,<span class="number">0.7</span>],</span><br><span class="line">                          <span class="string">'colsample_bytree'</span>:[<span class="number">0.5</span>,<span class="number">0.6</span>,<span class="number">0.7</span>],</span><br><span class="line">                          <span class="string">'min_child_weight'</span>:[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                          <span class="string">'gamma'</span>:[<span class="number">0</span>,<span class="number">0.003</span>,<span class="number">0.005</span>],</span><br><span class="line">                          <span class="string">'seed'</span>:list(range(<span class="number">20</span>))</span><br><span class="line">                      &#125;,</span><br><span class="line">                      scoring=<span class="string">'neg_mean_squared_error'</span>,</span><br><span class="line">                      cv=<span class="number">5</span>)</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;最后：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xgb = make_pipeline(RobustScaler(), XGBRegressor(learning_rate =<span class="number">0.01</span>, n_estimators=<span class="number">3500</span>, max_depth=<span class="number">3</span>,</span><br><span class="line">                     min_child_weight=<span class="number">0</span> , gamma=<span class="number">0</span>, subsample=<span class="number">0.6</span>,</span><br><span class="line">                     colsample_bytree=<span class="number">0.6</span>, reg_alpha=<span class="number">0</span>, seed=<span class="number">17</span>))</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<h1 id="stacking"><a href="#stacking" class="headerlink" title="stacking"></a>stacking</h1><p><br><br>&emsp;&emsp;通过对上面3个模型的预测值再进行学习，得到新的模型。同时这个方法有个参数use_features_in_secondary，如果选中，还会将原始数据放进来学习，这里我选True，元分类器我选择之前的xgb<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack = StackingCVRegressor(regressors=(ridge, lasso, xgb), meta_regressor=xgb, use_features_in_secondary=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<h1 id="汇总结果"><a href="#汇总结果" class="headerlink" title="汇总结果"></a>汇总结果</h1><p><br><br>&emsp;&emsp;最后用这4个模型对测试集进行预测，并将结果加权平均（记得把y用np.expm1转化回来）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ridge.fit(x_train, y_train)</span><br><span class="line">y_ridge = np.expm1(ridge.predict(x_test))</span><br><span class="line"></span><br><span class="line">lasso.fit(x_train, y_train)</span><br><span class="line">y_lasso = np.expm1(lasso.predict(x_test))</span><br><span class="line"></span><br><span class="line">xgb.fit(x_train, y_train)</span><br><span class="line">y_xgb = np.expm1(xgb.predict(x_test))</span><br><span class="line"></span><br><span class="line">stack.fit(x_train, y_train)</span><br><span class="line">y_stack = np.expm1(stack.predict(x_test))</span><br><span class="line"></span><br><span class="line">predict = <span class="number">0.5</span>*y_stack + <span class="number">0.1</span>*y_ridge + <span class="number">0.2</span>*y_lasso + <span class="number">0.2</span>*y_xgb</span><br></pre></td></tr></table></figure></p>
-<p><br><br>&emsp;&emsp;到这里，一个baseline就算完成了，剩下的就是根据理解和猜想去调整特征和模型，我做到前8%就放弃了，确实是黔驴技穷。不过说回来，入门项目虽然简单，但是能很好地让新手认识机器学习基本的流程，随着以后掌握的技能越来越多，就可以在原来的基础上提高或接触更有挑战性的项目。kaggle上的讨论和分享要比国内的这几个竞赛网站好很多，这一点也是最吸引我的地方，就看以后有没有机会回来给这个小项目来一个质的提升吧。</p>
+        <p>&emsp;&emsp;数据来自于kaggle的一个信用评估项目，比赛早就停止了，我就拿它的数据来做了一个简单的评分卡，话不多说，先来看看数据</p>
+<h1 id="数据预览"><a href="#数据预览" class="headerlink" title="数据预览"></a>数据预览</h1><p><br><br><br>&emsp;&emsp;数据的特征很少，总共10个自变量，下面是关于自变量的定义：</p>
+<table>
+<thead>
+<tr>
+<th>特征名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RevolvingUtilizationOfUnsecuredLines</td>
+<td>Total balance on credit cards and personal lines of credit except real estate and no installment debt like car loans divided by the sum of credit limits</td>
+</tr>
+<tr>
+<td>age</td>
+<td>Age of borrower in years</td>
+</tr>
+<tr>
+<td>NumberOfTime30-59DaysPastDueNotWorse</td>
+<td>Number of times borrower has been 30-59 days past due but no worse in the last 2 years.</td>
+</tr>
+<tr>
+<td>DebtRatio</td>
+<td>Monthly debt payments, alimony,living costs divided by monthy gross income</td>
+</tr>
+<tr>
+<td>MonthlyIncome</td>
+<td>Monthly income</td>
+</tr>
+<tr>
+<td>NumberOfOpenCreditLinesAndLoans</td>
+<td>Number of Open loans (installment like car loan or mortgage) and Lines of credit (e.g. credit cards)</td>
+</tr>
+<tr>
+<td>NumberOfTimes90DaysLate</td>
+<td>Number of times borrower has been 90 days or more past due.</td>
+</tr>
+<tr>
+<td>NumberRealEstateLoansOrLines</td>
+<td>Number of mortgage and real estate loans including home equity lines of credit</td>
+</tr>
+<tr>
+<td>NumberOfTime60-89DaysPastDueNotWorse</td>
+<td>Number of times borrower has been 60-89 days past due but no worse in the last 2 years.</td>
+</tr>
+<tr>
+<td>NumberOfDependents</td>
+<td>Number of dependents in family excluding themselves (spouse, children etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>&emsp;&emsp;目标特征则是SeriousDlqin2yrs，用0或1表示是否坏用户<br>&emsp;&emsp;数据分布就不在博客里展示了，太难看，同学们可以自己自己画一下<br>&emsp;&emsp;下面是各个特征相关系数图：<br><img src="/images/credit/corr.png" alt="corr"><br><br><br><br><br></p>
+<h1 id="大致思路"><a href="#大致思路" class="headerlink" title="大致思路"></a>大致思路<br><br></h1><p>&emsp;&emsp;通过前面对数据的观察，我发现了几个问题，并采用以下的处理办法：<br><br><br><strong>1、age=0</strong><br>&emsp;&emsp;训练集里有一个样本age为0，属于乱填，并且这个情况在测试集里没有出现<br>&emsp;&emsp;处理：<br>&emsp;&emsp;&emsp;&emsp;删除该样本<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train.drop(train[train[<span class="string">'age'</span>]==<span class="number">0</span>].index, inplace=<span class="symbol">True</span>)</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><strong>2、特征冗余</strong><br>&emsp;&emsp;这里的老赖分3个等级，拖了30-59天、60-89天、超过90天的，这3个变量相关度很高，说明基本都是一批人<br>&emsp;&emsp;处理：<br>&emsp;&emsp;&emsp;&emsp;保留和目标特征相关度较高的一个<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train.drop([<span class="string">'60-89DaysPast'</span>, <span class="string">'90DaysLate'</span>], axis=<span class="number">1</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">test.drop([<span class="string">'60-89DaysPast'</span>, <span class="string">'90DaysLate'</span>], axis=<span class="number">1</span>, inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><strong>3、debtratio&gt;1</strong><br>&emsp;&emsp;这个特征是指还款、赡养费、生活开销占毛月收入比例，训练集有35137个样本大于1（测试集也不少）<br>&emsp;&emsp;对于这个我有几个猜想：<br>&emsp;&emsp;&emsp;&emsp;1.确实入不敷出，可能收入差的一点钱家里一起分担掉了，那么dabtratio应该接近1的<br>&emsp;&emsp;&emsp;&emsp;2.家里有矿、有人包养，月收入几乎没有但挺会花钱的<br>&emsp;&emsp;&emsp;&emsp;3.debtratio可能是官方根据支出和收入计算来的，而有的人收入可能乱填成很小<br>&emsp;&emsp;&emsp;&emsp;4.收入没填的，可能系统默认当作1，因为分母不能为0（在原数据里可以看到，收入缺失的debtratio都是几位数）<br>&emsp;&emsp;&emsp;&emsp;5.可能这个人很多信息都是乱填的<br>&emsp;&emsp;处理：<br>&emsp;&emsp;&emsp;&emsp;不管这些有的没的猜想，反正是不好直接处理，只能通过后面分箱，看能不能把大于1的样本分出几部分，如果不能就作为一类。<br>&emsp;&emsp;另外：考虑到debtratio数据可能是后期算来的，如果debt统计正确的话，我们可能可以把它做成一个新变量<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pos_train_Income = resample_train[<span class="string">'MIncome'</span>].replace([<span class="number">0</span>, <span class="number">-10000</span>], <span class="number">1</span>)</span><br><span class="line">resample_train[<span class="string">'Debt'</span>] = pos_train_Income * resample_train[<span class="string">'DebtRatio'</span>]</span><br><span class="line"></span><br><span class="line">pos_test_Income = test[<span class="string">'MIncome'</span>].replace([<span class="number">0</span>, <span class="number">-10000</span>], <span class="number">1</span>)</span><br><span class="line">test[<span class="string">'Debt'</span>] = pos_test_Income * test[<span class="string">'DebtRatio'</span>]</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><strong>4、MonthlyIncome的缺失和异常值</strong><br>&emsp;&emsp;训练集有29731个缺失值（测试集也很多），缺失值太多，而该特征和其他特征相关度都极低，用机器学习补全也效果不好，同时也有很多很低的值，例如个位数、两位数等，我们不能否认可能部分极低值的真实性<br>&emsp;&emsp;处理：<br>&emsp;&emsp;&emsp;&emsp;月收入缺失的样本单独作为一类<br>&emsp;&emsp;&emsp;&emsp;收入极低的样本通过后期分箱看能分出几组来<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">'MIncome'</span>].fillna(<span class="number">-10000</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">test[<span class="string">'MIncome'</span>].fillna(<span class="number">-10000</span>, inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><strong>5、RevolvingUtilizationOfUnsecuredLines&gt;1</strong><br>&emsp;&emsp;这个变量指信用额度的使用率，超过1肯定是有问题，有可能和debtratio一样，是因为额度统计错误等原因<br>&emsp;&emsp;处理：<br>&emsp;&emsp;&emsp;&emsp;后期分箱看能否划分出几个组<br><br><br><strong>6、dependents缺失</strong><br>&emsp;&emsp;训练集里有3924个样本在dependents上缺失，缺失量不太大，并且和age、NumberRealEstateLoansOrLines有一定相关<br>&emsp;&emsp;处理：<br>&emsp;&emsp;&emsp;&emsp;机器学习来补齐数据，这里选择randomforest<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">rf_train_x = train[train[<span class="string">'MIncome'</span>]!=<span class="number">-10000</span>].iloc[:, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>]]</span><br><span class="line">rf_train_y = train[train[<span class="string">'MIncome'</span>]!=<span class="number">-10000</span>][<span class="string">'Dependents'</span>]</span><br><span class="line"><span class="comment"># 不想用不填收入的人，因为所有没填dependents的人都没填收入，他们虽然可能是一类人，但是他们的数据可能全都是乱写的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line">clf = RandomForestRegressor(random_state=<span class="number">0</span>, n_estimators=<span class="number">500</span>, n_jobs=<span class="number">-1</span>)</span><br><span class="line">clf.fit(rf_test_x, rf_test_y)</span><br><span class="line">clf.score(rf_test_x, rf_test_y)</span><br><span class="line"><span class="comment"># -&gt; 0.87447288413972102</span></span><br><span class="line"><span class="comment"># 就不做交叉验证了</span></span><br><span class="line"></span><br><span class="line">dep_train = np.round(clf.predict(train[train[<span class="string">'Dependents'</span>].isnull()].iloc[:, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>]]))</span><br><span class="line">dep_test = np.round(clf.predict(test[test[<span class="string">'Dependents'</span>].isnull()].iloc[:, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>]]))</span><br><span class="line">test[<span class="string">'Dependents'</span>][test[<span class="string">'Dependents'</span>].isnull()] = dep_test</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><strong>7、NumberOfOpenCreditLinesAndLoans和NumberRealEstateLoansOrLines</strong><br>&emsp;&emsp;前者指信用贷款和抵押贷款类的贷款数量，后者指抵押贷款和不动产借贷数量<br>&emsp;&emsp;感觉前者部分包含了后者，并且所有样本在前一个特征的值都比后一个大(让我觉得不是巧合)<br>&emsp;&emsp;考虑建立一个新变量<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">resample_train[<span class="string">'credit'</span>] = resample_train[<span class="string">'OpenL2'</span>] - resample_train[<span class="string">'REL'</span>]</span><br><span class="line">test[<span class="string">'credit'</span>] = test[<span class="string">'OpenL2'</span>] - test[<span class="string">'REL'</span>]</span><br><span class="line"></span><br><span class="line">resample_train.to_csv(<span class="string">'train_fixed1.csv'</span>, index=<span class="keyword">False</span>)</span><br><span class="line">test.to_csv(<span class="string">'test_fixed1.csv'</span>, index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><strong>8、数据不平衡</strong><br>&emsp;&emsp;正负样本比例约为14:1<br>&emsp;&emsp;处理：<br>&emsp;&emsp;&emsp;&emsp;采用smote升采样至10:1，然后多次对正样本采样生成几组训练集，对学习结果求均值<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 代码是从简书上借鉴来的，用的是k临近值求均值或众数充当新数据</span></span><br><span class="line"><span class="comment"># 这个函数有个小地方要注意</span></span><br><span class="line"><span class="comment"># 如果一个变量unqiue值数量小于kdistinctvalue，会被认为是类别变量，会对k临近值取众数</span></span><br><span class="line"><span class="comment"># 如果设置的较小，可能会取到k个点都不一样，这样会返回nan</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">smote</span><span class="params">(data, tag_index=None, max_amount=<span class="number">0</span>, std_rate=<span class="number">5</span>, kneighbor=<span class="number">5</span>, kdistinctvalue=<span class="number">10</span>, method=<span class="string">'mean'</span>)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        data = pd.DataFrame(data)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError</span><br><span class="line">    case_state = data.iloc[:, tag_index].groupby(data.iloc[:, tag_index]).count()</span><br><span class="line">    case_rate = max(case_state) / min(case_state)</span><br><span class="line">    location = []</span><br><span class="line">    <span class="keyword">if</span> case_rate &lt; <span class="number">5</span>:</span><br><span class="line">        print(<span class="string">'不需要smote过程'</span>)</span><br><span class="line">        <span class="keyword">return</span> data</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        less_data = np.array(</span><br><span class="line">            data[data.iloc[:, tag_index] == np.array(case_state[case_state == min(case_state)].index)[<span class="number">0</span>]])</span><br><span class="line">        more_data = np.array(</span><br><span class="line">            data[data.iloc[:, tag_index] == np.array(case_state[case_state == max(case_state)].index)[<span class="number">0</span>]])</span><br><span class="line">        neighbors = NearestNeighbors(n_neighbors=kneighbor).fit(less_data)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(less_data)):</span><br><span class="line">            point = less_data[i, :]</span><br><span class="line">            location_set = neighbors.kneighbors([less_data[i]], return_distance=<span class="keyword">False</span>)[<span class="number">0</span>]</span><br><span class="line">            location.append(location_set)</span><br><span class="line">        <span class="keyword">if</span> max_amount &gt; <span class="number">0</span>:</span><br><span class="line">            amount = max_amount</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            amount = int(max(case_state) / std_rate)</span><br><span class="line">        times = <span class="number">0</span></span><br><span class="line">        continue_index = []</span><br><span class="line">        class_index = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(less_data.shape[<span class="number">1</span>]):</span><br><span class="line">            <span class="keyword">if</span> len(pd.DataFrame(less_data[:, i]).drop_duplicates()) &gt; kdistinctvalue:</span><br><span class="line">                continue_index.append(i)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                class_index.append(i)</span><br><span class="line">        case_update = list()</span><br><span class="line">        location_transform = np.array(location)</span><br><span class="line">        <span class="keyword">while</span> times &lt; amount:</span><br><span class="line">            new_case = []</span><br><span class="line">            pool = np.random.permutation(len(location))[<span class="number">1</span>]</span><br><span class="line">            neighbor_group = location_transform[pool]</span><br><span class="line">            <span class="keyword">if</span> method == <span class="string">'mean'</span>:</span><br><span class="line">                new_case1 = less_data[list(neighbor_group), :][:, continue_index].mean(axis=<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">if</span> method == <span class="string">'random'</span>:</span><br><span class="line">                away_index = np.random.permutation(len(neighbor_group) - <span class="number">1</span>)[<span class="number">1</span>]</span><br><span class="line">                neighbor_group_removeorigin = neighbor_group[<span class="number">1</span>:][away_index]</span><br><span class="line">                new_case1 = less_data[pool][continue_index] + np.random.rand() * (</span><br><span class="line">                    less_data[pool][continue_index] - less_data[neighbor_group_removeorigin][continue_index])</span><br><span class="line">            new_case2 = np.array(pd.DataFrame(less_data[neighbor_group, :][:, class_index]).mode().iloc[<span class="number">0</span>, :])</span><br><span class="line">            new_case = list(new_case1) + list(new_case2)</span><br><span class="line">            <span class="keyword">if</span> times == <span class="number">0</span>:</span><br><span class="line">                case_update = new_case</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                case_update = np.c_[case_update, new_case]</span><br><span class="line">            print(<span class="string">'已经生成了%s条新数据，完成百分之%.2f'</span> % (times, times * <span class="number">100</span> / amount))</span><br><span class="line">            times = times + <span class="number">1</span></span><br><span class="line">        less_origin_data = np.hstack((less_data[:, continue_index], less_data[:, class_index]))</span><br><span class="line">        more_origin_data = np.hstack((more_data[:, continue_index], more_data[:, class_index]))</span><br><span class="line">        data_res = np.vstack((more_origin_data, less_origin_data, np.array(case_update.T)))</span><br><span class="line">        label_columns = [<span class="number">0</span>] * more_origin_data.shape[<span class="number">0</span>] + [<span class="number">1</span>] * (</span><br><span class="line">        less_origin_data.shape[<span class="number">0</span>] + np.array(case_update.T).shape[<span class="number">0</span>])</span><br><span class="line">        data_res = pd.DataFrame(data_res)</span><br><span class="line">    <span class="keyword">return</span> data_res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">resample_train = smote(train, tag_index=<span class="number">0</span>, std_rate=<span class="number">10</span>, kdistinctvalue=<span class="number">8</span>) </span><br><span class="line">resample_train[[<span class="string">'age'</span>, <span class="string">'30-59DaysPastDue'</span>, <span class="string">'MIncome'</span>, <span class="string">'OpenL2'</span>, <span class="string">'REL'</span>, <span class="string">'Dependents'</span>]] = \</span><br><span class="line">resample_train[[<span class="string">'age'</span>, <span class="string">'30-59DaysPastDue'</span>, <span class="string">'MIncome'</span>, <span class="string">'OpenL2'</span>, <span class="string">'REL'</span>, <span class="string">'Dependents'</span>]].applymap(round)</span><br><span class="line">resample_train[<span class="string">'MIncome'</span>].replace(<span class="number">-6000</span>, <span class="number">-10000</span>, inplace=<span class="keyword">True</span>)  <span class="comment">#用smote造出的收入有-10000和-6000，依然改为-10000</span></span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><br>&emsp;&emsp;一个简单的数据预处理就做完了，接下来就是对变量进行卡方分箱</p>
 
       
     </div>
@@ -462,7 +508,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kaggle入门/" rel="tag"><i class="fa fa-paperclip"></i> kaggle入门</a>
+            <a href="/tags/评分卡/" rel="tag"><i class="fa fa-paperclip"></i> 评分卡</a>
           
         </div>
       
@@ -475,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/27/house-price1/" rel="next" title="house_price(1)预处理">
-                <i class="fa fa-chevron-left"></i> house_price(1)预处理
+              <a href="/2018/11/01/credit-card2/" rel="next" title="credit_card(2)卡方分箱和变量筛选">
+                <i class="fa fa-chevron-left"></i> credit_card(2)卡方分箱和变量筛选
               </a>
             
           </div>
@@ -485,8 +531,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/30/ip-pool/" rel="prev" title="建立ip池">
-                建立ip池 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/02/house-price2/" rel="prev" title="house_price(2)建模">
+                house_price(2)建模 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -636,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ridge"><span class="nav-number">1.</span> <span class="nav-text">ridge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xgboost"><span class="nav-number">2.</span> <span class="nav-text">xgboost</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stacking"><span class="nav-number">3.</span> <span class="nav-text">stacking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汇总结果"><span class="nav-number">4.</span> <span class="nav-text">汇总结果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据预览"><span class="nav-number">1.</span> <span class="nav-text">数据预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#大致思路"><span class="nav-number">2.</span> <span class="nav-text">大致思路</span></a></li></ol></div>
             
 
           </div>
