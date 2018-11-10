@@ -89,7 +89,7 @@
 <meta name="description" content="&amp;emsp;&amp;emsp;下面将对数据套用LR模型，然后根据模型参数和woe值对样本进行评分，这个评分只是一个初步的评分，后续还有许多工作需要做来调整这个评分，不过我不是很了解这些，所以先就当一个初级工吧。&amp;emsp;&amp;emsp;首先我们留出30%的数据用以评估模型:12X_train, X_test, y_train, y_test = train_test_split(    train.ilo">
 <meta name="keywords" content="评分卡">
 <meta property="og:type" content="article">
-<meta property="og:title" content="credit-card(3) 建模与评分">
+<meta property="og:title" content="信用评分卡 ——  建模与评分">
 <meta property="og:url" content="http://yoursite.com/2018/11/01/credit-card3/index.html">
 <meta property="og:site_name" content="myth land">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;下面将对数据套用LR模型，然后根据模型参数和woe值对样本进行评分，这个评分只是一个初步的评分，后续还有许多工作需要做来调整这个评分，不过我不是很了解这些，所以先就当一个初级工吧。&amp;emsp;&amp;emsp;首先我们留出30%的数据用以评估模型:12X_train, X_test, y_train, y_test = train_test_split(    train.ilo">
@@ -97,9 +97,9 @@
 <meta property="og:image" content="http://yoursite.com/images/credit/roc.png">
 <meta property="og:image" content="http://yoursite.com/images/credit/ks.png">
 <meta property="og:image" content="http://yoursite.com/images/credit/hist.png">
-<meta property="og:updated_time" content="2018-11-08T08:40:55.081Z">
+<meta property="og:updated_time" content="2018-11-10T07:21:55.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="credit-card(3) 建模与评分">
+<meta name="twitter:title" content="信用评分卡 ——  建模与评分">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;下面将对数据套用LR模型，然后根据模型参数和woe值对样本进行评分，这个评分只是一个初步的评分，后续还有许多工作需要做来调整这个评分，不过我不是很了解这些，所以先就当一个初级工吧。&amp;emsp;&amp;emsp;首先我们留出30%的数据用以评估模型:12X_train, X_test, y_train, y_test = train_test_split(    train.ilo">
 <meta name="twitter:image" content="http://yoursite.com/images/credit/roc.png">
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>credit-card(3) 建模与评分 | myth land</title>
+  <title>信用评分卡 ——  建模与评分 | myth land</title>
   
 
 
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">credit-card(3) 建模与评分</h1>
+          <h1 class="post-title" itemprop="name headline">信用评分卡 ——  建模与评分</h1>
         
 
         <div class="post-meta">
@@ -404,7 +404,7 @@
 
       
         <p>&emsp;&emsp;下面将对数据套用LR模型，然后根据模型参数和woe值对样本进行评分，这个评分只是一个初步的评分，后续还有许多工作需要做来调整这个评分，不过我不是很了解这些，所以先就当一个初级工吧。<br><br><br><br>&emsp;&emsp;首先我们留出30%的数据用以评估模型:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(</span><br><span class="line">    train.iloc[:,:<span class="number">-1</span>], train[<span class="string">'target'</span>], test_size=<span class="number">0.3</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure></p>
-<h1 id="再次处理不平衡"><a href="#再次处理不平衡" class="headerlink" title="再次处理不平衡"></a>再次处理不平衡<br></h1><p>&emsp;&emsp;之前的处理我只把正负样本比例升到10:1，因为这个方法容易导致过拟合，但实际上10:1的比例还是有点高，就算模型全蒙是正样本都有炒鸡好的指标值，而如果直接降采样对这个数据量不是很大的数据集还是会有很多信息损失<br>&emsp;&emsp;所以，我将随机n次进行降采样，每次随机抽取一半的正样本和所有负样本合并作为新数据集进行学习，最后对这n个数据集学习的结果求均值得到最终的结果<br><br><br></p>
+<h1 id="再次处理不平衡"><a href="#再次处理不平衡" class="headerlink" title="再次处理不平衡"></a>再次处理不平衡<br></h1><p>&emsp;&emsp;之前的处理我只把正负样本比例升到10:1，因为这个方法容易导致过拟合，但实际上10:1的比例还是有点高，而如果直接降采样对这个数据量不是很大的数据集还是会有很多信息损失<br>&emsp;&emsp;所以，我将随机n次进行降采样，每次随机抽取一半的正样本和所有负样本合并作为新数据集进行学习，最后对这n个数据集学习的结果求均值得到最终的结果<br><br><br></p>
 <h3 id="下采样-拼接："><a href="#下采样-拼接：" class="headerlink" title="下采样+拼接："></a>下采样+拼接：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">undersample</span><span class="params">(X, y, subsets=<span class="number">7</span>)</span>:</span></span><br><span class="line">    data = X.join(y)</span><br><span class="line">    train_sets = []</span><br><span class="line">    neg = data[data[<span class="string">'target'</span>]==<span class="number">0</span>]</span><br><span class="line">    pos = data[data[<span class="string">'target'</span>]==<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(subsets):</span><br><span class="line">        re_neg = neg.sample(frac=<span class="number">0.5</span>)</span><br><span class="line">        combine = pd.concat([re_neg, pos])</span><br><span class="line">        train_sets.append(combine)</span><br><span class="line">    <span class="keyword">return</span> train_sets</span><br><span class="line">train_sets = undersample(X_train, y_train, subsets=<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
 <p><br><br></p>
 <h3 id="定义训练函数"><a href="#定义训练函数" class="headerlink" title="定义训练函数"></a>定义训练函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># LR的c=2是我之前对7组数据分别交叉验证找到的较合适的参数值，因为步骤多且写出来意义不大，接直接跳过</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">training</span><span class="params">(data_sets, test)</span>:</span></span><br><span class="line">    test_results = []</span><br><span class="line">    coefs = []</span><br><span class="line">    intercepts = []</span><br><span class="line">    model = LogisticRegression(C=<span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> data_sets:</span><br><span class="line">        y_train = data[<span class="string">'target'</span>]</span><br><span class="line">        x_train = data.iloc[:,:<span class="number">-1</span>]</span><br><span class="line">        clf = model.fit(x_train.values, y_train.values)</span><br><span class="line">        coefs.append(clf.coef_)</span><br><span class="line">        intercepts.append(clf.intercept_)</span><br><span class="line">        test_results.append(clf.predict_proba(test)[:,<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'test_results'</span>:test_results, <span class="string">'coefs'</span>:coefs, <span class="string">'intercepts'</span>:intercepts&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里画不了学习曲线，在开始采样时正样本比例过低，会报错</span></span><br></pre></td></tr></table></figure>
@@ -418,7 +418,7 @@
 <p><center>600 = A - B*ln(1/20)</center></p>
 <p><center>600 - 30 = A - B*ln(1/10)</center><br>&emsp;&emsp;里面的1/20就是这个线性函数的x，我们用odd来表示，最后解出A和B<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="number">30</span>/np.log(<span class="number">2</span>)</span><br><span class="line">a = <span class="number">600</span> + b*np.log(odd)</span><br></pre></td></tr></table></figure></p>
 <p><br><br>&emsp;&emsp;这样，我们就可以用客户信息对应的woe值、LR的系数、A和B来得到用户的最终分数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">score = \</span><br><span class="line">a-b*intercept-\</span><br><span class="line"><span class="number">-0.783247</span>*b*test[<span class="string">'RuOfUL'</span>] -\</span><br><span class="line"><span class="number">-0.382026</span>*b*test[<span class="string">'age'</span>] -\</span><br><span class="line"><span class="number">-0.720417</span>*b*test[<span class="string">'30-59DaysPastDue'</span>] -\</span><br><span class="line"><span class="number">-0.182033</span>*b*test[<span class="string">'DebtRatio'</span>] -\</span><br><span class="line"><span class="number">-0.543901</span>*b*test[<span class="string">'MIncome'</span>] -\</span><br><span class="line"><span class="number">-0.603020</span>*b*test[<span class="string">'Dependents'</span>]</span><br></pre></td></tr></table></figure></p>
-<p><br><br>&emsp;&emsp;我们来画一下这些用户得分的分布情况<br><img src="/images/credit/hist.png" alt="hist"><br><br><br>&emsp;&emsp;这个直方图有三座山峰，感觉还挺符合现状的，很大部分人评分大于550，属于优质客户；其次是分数在450-550，属于普通用户，这些人可能存在失信的风险；剩下的450分以下的属于准老赖用户，失信概率较高。<br><br><br>&emsp;&emsp;前面评分的地方我是用自己的话来讲的，可能有地方不对，有大佬觉得有问题可以在下面评论纠正一下哈～<br>&emsp;&emsp;到目前为止，就完成了对用户初步的评分，之后还有很多工作要做，比如调整模型，根据其他的指标调整分数等等，因为不是很熟悉这个领域，所以就先做到这里吧～</p>
+<p><br><br>&emsp;&emsp;我们来画一下这些用户得分的分布情况<br><img src="/images/credit/hist.png" alt="hist"><br><br><br>&emsp;&emsp;这个直方图有三座山峰，感觉还挺符合现状的，很大部分人评分大于550，属于信用良好客户；其次是分数在450-550，属于普通用户，这些人可能存在失信的风险；剩下的450分以下的属于准老赖用户，失信概率较高。<br><br><br>&emsp;&emsp;前面评分的地方我是用自己的话来讲的，可能有地方不对，有大佬觉得有问题可以在下面评论纠正一下哈～<br>&emsp;&emsp;到目前为止，就完成了对用户初步的评分，之后还有很多工作要做，比如调整模型，根据其他的指标调整分数等等，因为不是很熟悉这个领域，所以就先做到这里吧～</p>
 
       
     </div>
@@ -478,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/31/lagou/" rel="next" title="拉钩网数据分析师岗位分析">
-                <i class="fa fa-chevron-left"></i> 拉钩网数据分析师岗位分析
+              <a href="/2018/10/30/fcitx/" rel="next" title="linux下fcitx的配置和各种问题（图标异常、跳光标、卡顿等）">
+                <i class="fa fa-chevron-left"></i> linux下fcitx的配置和各种问题（图标异常、跳光标、卡顿等）
               </a>
             
           </div>
@@ -488,8 +488,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/01/credit-card2/" rel="prev" title="credit_card(2)卡方分箱和变量筛选">
-                credit_card(2)卡方分箱和变量筛选 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/01/credit-card2/" rel="prev" title="信用评分卡 —— 卡方分箱和变量筛选">
+                信用评分卡 —— 卡方分箱和变量筛选 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -574,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

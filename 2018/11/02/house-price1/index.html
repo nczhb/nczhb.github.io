@@ -86,22 +86,20 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;这个项目是kaggle上的入门项目之一，根据房屋信息来预测房价，这也是我做的第一个项目。数据量有一些少，训练集加上测试集不到3000，所以随随便便做一下就过拟合了。。。我后来尝试调整，发现越是成绩有提升的，原来交叉验证时分数越差，但我把正则化放小后，两样成绩都变差。所以还是得在特征工程上调整&amp;emsp;&amp;emsp;后来我再怎么做也是定格在8%的位置，rmse值最高0.115">
+<meta name="description" content="&amp;emsp;&amp;emsp;在前面我们已经把项目步骤过了一遍，下面的这些是更具体的处理，从预处理到建立模型。  大致观察&amp;emsp;&amp;emsp;首先我们来看看数据基本情况，看看分布，做做连续变量间相关，哪些变量有缺失值，图就不放了，同学们想象一下（其实是那个图太大了。。，其他结果直接在后面的处理里会出现）。脑补之后，我们发现了一些问题：1.一个异常年份&amp;emsp;&amp;emsp;一个人在车库建成年份填了2">
 <meta name="keywords" content="kaggle入门">
 <meta property="og:type" content="article">
-<meta property="og:title" content="house_price(1)预处理">
+<meta property="og:title" content="房价预测 —— 预处理">
 <meta property="og:url" content="http://yoursite.com/2018/11/02/house-price1/index.html">
 <meta property="og:site_name" content="myth land">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;这个项目是kaggle上的入门项目之一，根据房屋信息来预测房价，这也是我做的第一个项目。数据量有一些少，训练集加上测试集不到3000，所以随随便便做一下就过拟合了。。。我后来尝试调整，发现越是成绩有提升的，原来交叉验证时分数越差，但我把正则化放小后，两样成绩都变差。所以还是得在特征工程上调整&amp;emsp;&amp;emsp;后来我再怎么做也是定格在8%的位置，rmse值最高0.115">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;在前面我们已经把项目步骤过了一遍，下面的这些是更具体的处理，从预处理到建立模型。  大致观察&amp;emsp;&amp;emsp;首先我们来看看数据基本情况，看看分布，做做连续变量间相关，哪些变量有缺失值，图就不放了，同学们想象一下（其实是那个图太大了。。，其他结果直接在后面的处理里会出现）。脑补之后，我们发现了一些问题：1.一个异常年份&amp;emsp;&amp;emsp;一个人在车库建成年份填了2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/house_price/rank.png">
-<meta property="og:image" content="http://yoursite.com/images/house_price/score.png">
 <meta property="og:image" content="http://yoursite.com/images/house_price/outliar.png">
-<meta property="og:updated_time" content="2018-11-08T08:41:09.041Z">
+<meta property="og:updated_time" content="2018-11-10T07:20:12.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="house_price(1)预处理">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;这个项目是kaggle上的入门项目之一，根据房屋信息来预测房价，这也是我做的第一个项目。数据量有一些少，训练集加上测试集不到3000，所以随随便便做一下就过拟合了。。。我后来尝试调整，发现越是成绩有提升的，原来交叉验证时分数越差，但我把正则化放小后，两样成绩都变差。所以还是得在特征工程上调整&amp;emsp;&amp;emsp;后来我再怎么做也是定格在8%的位置，rmse值最高0.115">
-<meta name="twitter:image" content="http://yoursite.com/images/house_price/rank.png">
+<meta name="twitter:title" content="房价预测 —— 预处理">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在前面我们已经把项目步骤过了一遍，下面的这些是更具体的处理，从预处理到建立模型。  大致观察&amp;emsp;&amp;emsp;首先我们来看看数据基本情况，看看分布，做做连续变量间相关，哪些变量有缺失值，图就不放了，同学们想象一下（其实是那个图太大了。。，其他结果直接在后面的处理里会出现）。脑补之后，我们发现了一些问题：1.一个异常年份&amp;emsp;&amp;emsp;一个人在车库建成年份填了2">
+<meta name="twitter:image" content="http://yoursite.com/images/house_price/outliar.png">
 
 
 
@@ -137,7 +135,7 @@
 
 
 
-  <title>house_price(1)预处理 | myth land</title>
+  <title>房价预测 —— 预处理 | myth land</title>
   
 
 
@@ -316,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">house_price(1)预处理</h1>
+          <h1 class="post-title" itemprop="name headline">房价预测 —— 预处理</h1>
         
 
         <div class="post-meta">
@@ -403,8 +401,8 @@
       
 
       
-        <p>&emsp;&emsp;这个项目是kaggle上的入门项目之一，根据房屋信息来预测房价，这也是我做的第一个项目。数据量有一些少，训练集加上测试集不到3000，所以随随便便做一下就过拟合了。。。我后来尝试调整，发现越是成绩有提升的，原来交叉验证时分数越差，但我把正则化放小后，两样成绩都变差。所以还是得在特征工程上调整<br>&emsp;&emsp;后来我再怎么做也是定格在8%的位置，rmse值最高0.11508，我觉得用我现在的水平搞不出多大的提升。另外我还看了别人做的好的kernel，有些地方不是很理解，比如他们有的创建新变量其实原来就已经有了，添加相同的变量和修改损失函数有啥区别，但别还说，真有提升。。。所以这种层面的我可能就暂时驾驭不住了。也有人最初的分数和我差不多，但是他发现训练出来的结果在两端有一点偏差，偏大或者偏小，将两边暴力修改(乘一个系数)后成绩得到显著的提升。。。但是我的y两边没有这样，所以也没效果。感觉自己还是嫩了点，办法想不出多少，以后长本事了看能不能搞进前5%甚至前1%吧。。。<br><img src="/images/house_price/rank.png" alt="rank"><br><img src="/images/house_price/score.png" alt="score"><br>&emsp;&emsp;接下来，我先把我的baseline展示一下，因为这些都是我自己理解的操作，也是一些基本操作。</p>
-<p><br><br><br></p>
+        <p>&emsp;&emsp;在前面我们已经把项目步骤过了一遍，下面的这些是更具体的处理，从预处理到建立模型。</p>
+<p><br></p>
 <h1 id="大致观察"><a href="#大致观察" class="headerlink" title="大致观察"></a>大致观察</h1><p><br><br>&emsp;&emsp;首先我们来看看数据基本情况，看看分布，做做连续变量间相关，哪些变量有缺失值，图就不放了，同学们想象一下（其实是那个图太大了。。，其他结果直接在后面的处理里会出现）。脑补之后，我们发现了一些问题：<br><br><br><strong>1.一个异常年份</strong><br>&emsp;&emsp;一个人在车库建成年份填了2207年，有屁股的人都会觉得他可能想写2007年，去看一下相关变量，他的房子是2006年建的并且2007年得到了’强化’，没得说，就把它改成2007<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test[<span class="string">'GarageYrBlt'</span>][<span class="number">2593</span>] = <span class="number">2007</span></span><br></pre></td></tr></table></figure></p>
 <p><br><br><strong>2.两个肉眼看上去不科学的样本</strong><br><img src="/images/house_price/outliar.png" alt="outerliar"><br>&emsp;&emsp;右下角的两个点，面积在所有的里面最大，房价却算得上廉价了，最主要是他们两个偏离大众有点远，不管你是真实还是乱填的数据，都得删掉这两个毒瘤<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train.drop(train[(train[<span class="string">'GrLivArea'</span>]&gt;<span class="number">4500</span>)].index, inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
 <p><br><br><strong>3.很多缺失值</strong><br>&emsp;&emsp;大概有34个变量存在缺失值，就不列出来了，后面处理时自然能看到有哪些。在处理之前我想说一点，这个数据集有一个坑，很多变量里就设有NA这个变量值，用来表示没有这类东西，但是他们把缺失值也录成NA，所以在包含NA变量值的变量下，真的值是NA还是缺失了，傻傻分不清。。。我们只能根据其他变量推测这个可能确实是缺失值，没有其他信息就只能当作没缺失。下面很长一部分都是在处理缺失值：<br><br><br><br></p>
@@ -506,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/02/house-price2/" rel="next" title="house_price(2)建模">
-                <i class="fa fa-chevron-left"></i> house_price(2)建模
+              <a href="/2018/11/02/house-price2/" rel="next" title="房价预测 —— 建模">
+                <i class="fa fa-chevron-left"></i> 房价预测 —— 建模
               </a>
             
           </div>
@@ -515,6 +513,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/08/house-price-sum/" rel="prev" title="房价预测(浓缩版)">
+                房价预测(浓缩版) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -598,7 +600,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

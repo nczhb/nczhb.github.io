@@ -86,20 +86,20 @@
 
 
 
-<meta name="description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，如果显著，我这里设置的p值是0.01，则保留这两组，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum().sum()    r =">
+<meta name="description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，取里面结果最差的，如果显著，我这里设置的p值是0.01，则保留这两组，结束分箱，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum()">
 <meta name="keywords" content="评分卡">
 <meta property="og:type" content="article">
-<meta property="og:title" content="credit_card(2)卡方分箱和变量筛选">
+<meta property="og:title" content="信用评分卡 —— 卡方分箱和变量筛选">
 <meta property="og:url" content="http://yoursite.com/2018/11/01/credit-card2/index.html">
 <meta property="og:site_name" content="myth land">
-<meta property="og:description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，如果显著，我这里设置的p值是0.01，则保留这两组，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum().sum()    r =">
+<meta property="og:description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，取里面结果最差的，如果显著，我这里设置的p值是0.01，则保留这两组，结束分箱，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum()">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/credit/age.png">
 <meta property="og:image" content="http://yoursite.com/images/credit/xgb.png">
-<meta property="og:updated_time" content="2018-11-08T08:40:42.346Z">
+<meta property="og:updated_time" content="2018-11-10T07:21:35.180Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="credit_card(2)卡方分箱和变量筛选">
-<meta name="twitter:description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，如果显著，我这里设置的p值是0.01，则保留这两组，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum().sum()    r =">
+<meta name="twitter:title" content="信用评分卡 —— 卡方分箱和变量筛选">
+<meta name="twitter:description" content="预备工作&amp;emsp;&amp;emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，取里面结果最差的，如果显著，我这里设置的p值是0.01，则保留这两组，结束分箱，否则这两组合并。12345678910111213141516171819202122232425262728293031def chi2(freq, min_e=0.5):    N = freq.sum()">
 <meta name="twitter:image" content="http://yoursite.com/images/credit/age.png">
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <title>credit_card(2)卡方分箱和变量筛选 | myth land</title>
+  <title>信用评分卡 —— 卡方分箱和变量筛选 | myth land</title>
   
 
 
@@ -315,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">credit_card(2)卡方分箱和变量筛选</h1>
+          <h1 class="post-title" itemprop="name headline">信用评分卡 —— 卡方分箱和变量筛选</h1>
         
 
         <div class="post-meta">
@@ -402,7 +402,7 @@
       
 
       
-        <h1 id="预备工作"><a href="#预备工作" class="headerlink" title="预备工作"></a>预备工作</h1><p>&emsp;&emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，如果显著，我这里设置的p值是0.01，则保留这两组，否则这两组合并。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chi2</span><span class="params">(freq, min_e=<span class="number">0.5</span>)</span>:</span></span><br><span class="line">    N = freq.sum().sum()</span><br><span class="line">    r = freq.sum(axis=<span class="number">1</span>)</span><br><span class="line">    c = freq.sum(axis=<span class="number">0</span>)</span><br><span class="line">    chis = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(freq)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(freq.columns)):</span><br><span class="line">            o = freq.iloc[i, j]</span><br><span class="line">            e = r.iloc[i]*c.iloc[j]/N</span><br><span class="line">            e = e <span class="keyword">if</span> e &gt;= min_e <span class="keyword">else</span> min_e</span><br><span class="line">            chis += ((o-e)**<span class="number">2</span>) / e</span><br><span class="line">    <span class="keyword">return</span> chis</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(freq, min_score=<span class="number">9.21</span>)</span>:</span></span><br><span class="line">    n = len(freq)<span class="number">-1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:   </span><br><span class="line">        scores = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            score = chi2(freq.iloc[(i, i+<span class="number">1</span>), :])</span><br><span class="line">            scores.setdefault(score, []).append((i, i+<span class="number">1</span>))</span><br><span class="line">        floor = min(scores.keys())</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> floor &lt; min_score:</span><br><span class="line">            <span class="keyword">for</span> left, right <span class="keyword">in</span> list(reversed(scores[floor])):  </span><br><span class="line">                freq.iloc[left] += freq.iloc[right]</span><br><span class="line">                freq.drop(freq.index[right], axis=<span class="number">0</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">                n -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>: <span class="keyword">break</span></span><br><span class="line">    print(freq.index)</span><br><span class="line">    print(Series(scores).sort_values())</span><br></pre></td></tr></table></figure></p>
+        <h1 id="预备工作"><a href="#预备工作" class="headerlink" title="预备工作"></a>预备工作</h1><p>&emsp;&emsp;首先定义一个分箱函数。我这里是采用合并的方式进行分箱，对相邻的组进行卡方检验，取里面结果最差的，如果显著，我这里设置的p值是0.01，则保留这两组，结束分箱，否则这两组合并。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chi2</span><span class="params">(freq, min_e=<span class="number">0.5</span>)</span>:</span></span><br><span class="line">    N = freq.sum().sum()</span><br><span class="line">    r = freq.sum(axis=<span class="number">1</span>)</span><br><span class="line">    c = freq.sum(axis=<span class="number">0</span>)</span><br><span class="line">    chis = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(freq)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(freq.columns)):</span><br><span class="line">            o = freq.iloc[i, j]</span><br><span class="line">            e = r.iloc[i]*c.iloc[j]/N</span><br><span class="line">            e = e <span class="keyword">if</span> e &gt;= min_e <span class="keyword">else</span> min_e</span><br><span class="line">            chis += ((o-e)**<span class="number">2</span>) / e</span><br><span class="line">    <span class="keyword">return</span> chis</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(freq, min_score=<span class="number">9.21</span>)</span>:</span></span><br><span class="line">    n = len(freq)<span class="number">-1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:   </span><br><span class="line">        scores = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            score = chi2(freq.iloc[(i, i+<span class="number">1</span>), :])</span><br><span class="line">            scores.setdefault(score, []).append((i, i+<span class="number">1</span>))</span><br><span class="line">        floor = min(scores.keys())</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> floor &lt; min_score:</span><br><span class="line">            <span class="keyword">for</span> left, right <span class="keyword">in</span> list(reversed(scores[floor])):  </span><br><span class="line">                freq.iloc[left] += freq.iloc[right]</span><br><span class="line">                freq.drop(freq.index[right], axis=<span class="number">0</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">                n -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>: <span class="keyword">break</span></span><br><span class="line">    print(freq.index)</span><br><span class="line">    print(Series(scores).sort_values())</span><br></pre></td></tr></table></figure></p>
 <p><br><br><br></p>
 <p>&emsp;&emsp;因为是连续变量，而且unique值太多，从原始数据两两做卡方检验能做茫茫多年，所以我对数据先分一些组，例如比例型的值域0-1,就把他们保留两位小数，这样unique值不会超过100个(强迫症会说是101个)，对结果影响很小，但可以大大提高速度<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rd</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> x&lt;=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> round(x,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">elif</span> x&lt;=<span class="number">10</span>:</span><br><span class="line">        <span class="keyword">return</span> int(x)+<span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> x&lt;=<span class="number">100</span>:</span><br><span class="line">        <span class="keyword">return</span> int(x/<span class="number">5</span>+<span class="number">1</span>)*<span class="number">5</span></span><br><span class="line">    <span class="keyword">elif</span> x&lt;=<span class="number">1000</span>:</span><br><span class="line">        <span class="keyword">return</span> int(x/<span class="number">100</span>+<span class="number">1</span>)*<span class="number">100</span></span><br><span class="line">    <span class="keyword">elif</span> x&lt;=<span class="number">10000</span>:</span><br><span class="line">        <span class="keyword">return</span> int(x/<span class="number">1000</span>+<span class="number">1</span>)*<span class="number">1000</span></span><br><span class="line">    <span class="keyword">elif</span> x&lt;=<span class="number">100000</span>:</span><br><span class="line">        <span class="keyword">return</span> int(x/<span class="number">10000</span>+<span class="number">1</span>)*<span class="number">10000</span></span><br><span class="line">    <span class="keyword">elif</span> x&lt;=<span class="number">1000000</span>:</span><br><span class="line">        <span class="keyword">return</span> int(x/<span class="number">100000</span>+<span class="number">1</span>)*<span class="number">100000</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> int(x/<span class="number">1000000</span>+<span class="number">1</span>)*<span class="number">1000000</span></span><br></pre></td></tr></table></figure></p>
 <p><br><br>&emsp;&emsp;因为最后分箱时需要用到每个箱之间的边界，所以我就把两组间的边界定义成前一组的最大值和后一组最小值的平均数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_border</span><span class="params">(name, groups)</span>:</span></span><br><span class="line">    min_max = train[name].groupby(train[name].map(rd)).agg([<span class="string">'min'</span>, <span class="string">'max'</span>])</span><br><span class="line">    trans =  Series((min_max[<span class="string">'min'</span>].iloc[<span class="number">1</span>:].values+min_max[<span class="string">'max'</span>].iloc[:<span class="number">-1</span>].values)/<span class="number">2</span>, index = min_max.index[<span class="number">1</span>:])</span><br><span class="line">    <span class="keyword">return</span> trans[groups]</span><br></pre></td></tr></table></figure></p>
@@ -543,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/01/credit-card3/" rel="next" title="credit-card(3) 建模与评分">
-                <i class="fa fa-chevron-left"></i> credit-card(3) 建模与评分
+              <a href="/2018/11/01/credit-card3/" rel="next" title="信用评分卡 ——  建模与评分">
+                <i class="fa fa-chevron-left"></i> 信用评分卡 ——  建模与评分
               </a>
             
           </div>
@@ -553,8 +553,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/01/credit-card1/" rel="prev" title="credit_card (1)预处理">
-                credit_card (1)预处理 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/01/credit-card1/" rel="prev" title="信用评分卡 —— 预处理">
+                信用评分卡 —— 预处理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -639,7 +639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
